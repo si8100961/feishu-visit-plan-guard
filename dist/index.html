@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>拜访计划安全操作</title>  <script type="module" crossorigin src="./assets/index-BKpt2B9n.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BHdCwlN5.css">
+</head>
+<body><main><header><h1>修改／删除计划</h1><button id="refresh" disabled>刷新</button></header>
+<p class="muted">仅处理你选择的这一条计划；不删除客户、待办或采购需求。</p>
+<p id="notice" role="status">正在连接…</p>
+<section id="picker" hidden><label>选择计划<select id="plan"><option value="">请选择</option></select></label><button id="open">查看计划</button></section>
+<section id="editor" hidden><div class="card"><strong id="identity"></strong><p id="status"></p><p id="content"></p></div>
+<form id="form"><label>拜访日期<input id="visit-date" type="date" required></label>
+<label>时段<select id="period"><option value="am">上午</option><option value="pm">下午</option></select></label>
+<div id="time-picker"><div class="row"><span>具体时间（可不填）</span><button id="clear-time" type="button">清空</button></div><div class="row"><label>小时<select id="visit-hour"><option value="" hidden disabled>--</option></select></label><span>:</span><label>分钟<select id="visit-minute"><option value="" hidden disabled>--</option></select></label></div><p id="legacy-time-hint" class="muted" hidden>保留原有分钟；重新选择使用 00、15、30、45。</p></div>
+<label>约见客户<input id="search" type="search" placeholder="搜索客户、部门或姓名"></label><div id="chosen"></div><div id="matches"></div>
+<p id="error" role="alert" hidden></p><div class="actions"><button id="delete" type="button" class="danger">删除计划</button><button id="save" class="primary">保存修改</button></div></form></section>
+<section id="review" hidden aria-labelledby="review-title"><h2 id="review-title"></h2><p id="review-text"></p><div id="options"></div><p id="review-error" role="alert"></p><div class="actions"><button id="back">取消</button><button id="confirm" class="primary">确认</button></div></section>
+<footer>本入口提供删改保护。直接右键删除、直接改单元格不经过这层确认。</footer></main></body></html>

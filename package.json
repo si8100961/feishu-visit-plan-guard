@@ -1,0 +1,1 @@
+{"name":"visit-plan-guard","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host 127.0.0.1 --port 5193","build":"vite build","test":"node --test test/*.test.mjs"},"dependencies":{"@lark-base-open/js-sdk":"1.0.2"},"devDependencies":{"vite":"6.4.4"},"output":"dist"}
