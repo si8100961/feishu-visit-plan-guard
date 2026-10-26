@@ -93,11 +93,12 @@ export class PlanGuard {
    const rows=await readAll(this.repo.contact),people=input.customerIds.map(id=>rows.find(r=>r.recordId===id));
    if(!people.length||people.some(p=>!p||!linkedIds(p.fields[this.assoc]).length))throw Error('客户档案或机构归属不完整，未同步客户信息。');
    const values=field=>[...new Set(people.map(p=>plainText(p.fields[field]).trim()).filter(Boolean))];
-   const s=this.repo.source,branch=values(s.branchField),level1=values(s.level1Field);
+   const s=this.repo.source;
+   const branches=[...new Set(people.map(p=>[s.branchField,s.level1Field,s.organizationField].map(f=>plainText(p.fields[f]).trim()).find(Boolean)).filter(Boolean))];
    cells[this.v.people]={recordIds:input.customerIds};
    cells[this.v.org]={recordIds:[...new Set(people.flatMap(p=>linkedIds(p.fields[this.assoc])))]};
    cells[this.v.names]=text(values(s.nameField).join('、'));
-   cells[this.v.branch]=text((branch.length?branch:level1.length?level1:values(s.organizationField)).join('、'));
+   cells[this.v.branch]=text(branches.join('、'));
    cells[this.v.dept]=text(values(s.departmentField).join('、'));
   }
   return cells;
